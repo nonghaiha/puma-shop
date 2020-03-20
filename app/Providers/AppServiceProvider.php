@@ -1,5 +1,6 @@
 <?php
 namespace App\Providers;
+use App\Models\Categories;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Category;
 class AppServiceProvider extends ServiceProvider
@@ -21,15 +22,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
-        view()->composer('*', function ($view) 
+        view()->composer('*', function ($view)
         {
             $cart = new Cart();
             $view->with([
                 'name' => "Demo name global",
                 'carts' => $cart,
-                'categories' => Category::orderBy('name','ASC')->get()
-            ]);    
-        }); 
+                'categories' => Categories::orderBy('name','ASC')->get()
+            ]);
+        });
     }
 }

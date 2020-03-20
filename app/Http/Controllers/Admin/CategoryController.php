@@ -2,51 +2,53 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Categories;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
-    /** 
+    /**
     GET account.index =>url account/index
     */
     public function index()
     {
-       $data['categorys']=category::where('parent_id',1)->orderBy('id','asc')->paginate(5);
+       $data['categorys']=Categories::where('parent_id',1)->orderBy('id','asc')->paginate(5);
        return view('backend.category.index',$data);
     }
 
-    /** 
+    /**
     GET account.create =>url account/create
     */
-    public function create()
+    public function create(Request $request)
     {
-       $data['categorys']=category::all();
+       $data['categorys']=Categories::all();
         return view('backend.category.create',$data);
     }
 
-    /** 
+    /**
     post account.store =>url acount/store
     */
     public function store(Request $request)
     {
         $slug=str_slug($request->name);
         $request['slug']=$slug;
-        category::create($request->all());
+        Categories::create($request->all());
         return redirect()->route('category.index');
     }
 
-    /** 
+    /**
     get account.edit =>url acount/1/edit
     */
     public function edit($id)
     {
-        $data['cat_edit']=category::find($id);
+        $data['cat_edit']=Categories::find($id);
         return view('backend.category.edit',$data);
     }
 
-     /** 
+     /**
     put account.update =>url acount/1/update
     */
     public function update(Request $request,$id)
@@ -55,11 +57,11 @@ class CategoryController extends Controller
         $request['slug']=$slug;
         $request->offsetUnset('_token');//or $request->only('name','status');
         $request->offsetUnset('_method');
-        category::where('id',$id)->update($request->all());
+        Categories::where('id',$id)->update($request->all());
         return redirect()->route('category.index');
     }
 
-    /** 
+    /**
     get account.show =>url acount/1
     */
     public function show($id)
@@ -67,20 +69,34 @@ class CategoryController extends Controller
 
     }
 
-    /** 
+    public function search(Request $request)
+    {
+        $input = $request->input('search');
+        $categorys = DB::table('category')->where('name','LIKE','%'.$input.'%')->paginate(5);
+        return view('backend.category.index',compact('categorys'));
+    }
+
+    /**
     delete account.show =>url acount/1
     */
     public function destroy($id)
     {
-        category::find($id)->delete();
-        return redirect()->route('category.index')->with('success','Xóa danh mục thành công!');
+        $product = Product::all();
+        if($product)
+        {
+            return redirect()->route('category.index')->with('error', 'Xóa không thành công do có sản phẩm tồn tại!');
+        }
+        else {
+            Categories::find($id)->delete();
+            return redirect()->route('category.index')->with('success', 'Xóa danh mục thành công!');
+        }
     }
 
 
     public function getListCategory($id,$cap)
     {
-        $data['categorys']=category::where('parent_id',$id)->orderBy('id','asc')->paginate(5);
-        $data['subcategory']=category::find($id);
+        $data['categorys']=Categories::where('parent_id',$id)->orderBy('id','asc')->paginate(5);
+        $data['subcategory']=Categories::find($id);
         $data['cap']=$cap;
         return view('backend.category.subcategory',$data);
     }
@@ -94,7 +110,7 @@ class CategoryController extends Controller
         $slug=str_slug($request->name);
         $request['slug']=$slug;
         $request['parent_id']=$id;
-        category::create($request->all());
+        Categories::create($request->all());
         return redirect()->route('category.index')->with('success','Thêm mới danh mục thành công !');
     }
 

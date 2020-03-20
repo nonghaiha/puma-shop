@@ -49,7 +49,7 @@
                                                     X {{number_format($it['price'])}} VNĐ
                                                 </span>
                                             </div><!-- End .product-details -->
-                                            
+
                                             <figure class="product-image-container">
                                                 <a href="product.html" class="product-image">
                                                     <img src="{{ url('/frontend') }}/assets/images/products/cart/product-1.jpg" alt="product">
@@ -75,4 +75,3 @@
                     </div><!-- End .header-right -->
                 </div><!-- End .container -->
             </div><!-- End .header-middle -->
-            

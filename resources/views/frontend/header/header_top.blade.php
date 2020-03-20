@@ -21,7 +21,7 @@
                             <div class="header-menu">
                                 <ul>
                                     <li><a href="{{route('home.account')}}">MY ACCOUNT</a></li>
-                                    <li><a href="{{route('product.all')}}">DAILY DEAL</a></li>
+                                    <li><a href="">DAILY DEAL</a></li>
                                     <li><a href="#">MY WISHLIST </a></li>
                                     <li><a href="{{route('blog')}}">BLOG</a></li>
                                     <li><a href="{{route('contact.index')}}">Contact</a></li>

@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin','namespace' => 'admin','middleware'=>'CheckLog
 
        include_once 'admin/banner.php';
        include_once 'admin/category.php';
+       Route::post('/category/search','CategoryController@search')->name('category.search');
        Route::get('/DMcon-{id}-{cap}','CategoryController@getListCategory')->name('dm_con_category');
        Route::get('/addDMcon-{id}','CategoryController@getAddDMCOn')->name('get_add_dm_con_category');
        Route::post('/addDMcon-{id}','CategoryController@postAddDMCOn')->name('post_add_dm_con_category');
@@ -37,7 +38,7 @@ Route::group(['prefix' => 'admin','namespace' => 'admin','middleware'=>'CheckLog
        Route::get('/kho-{id}','ProductController@getKho')->name('get.product.kho');
        Route::post('/kho-{id}','ProductController@postKho')->name('post.product.kho');
        include_once 'admin/product.php';
-       
+
        include_once 'admin/customer.php';
        include_once 'admin/orders.php';
 
@@ -54,16 +55,17 @@ Route::group(['prefix' => 'admin','namespace' => 'admin','middleware'=>'CheckLog
 
         //      Route::get('/edit/{id}','CategoryController@getCategoryEdit')->name('get_category_edit');
         //      Route::post('/edit/{id}','CategoryController@postCategoryEdit');
-             
+
         //      Route::post('/delete/{id}','CategoryController@getCategoryDelete')->name('post_category_delete');
 
         //      Route::get('/search','CategoryController@searchCategory')->name('search_category');
         // });
-       
+
     });
   Route::get('/','Admin\HomeController@index')->name('frontend.layout');
   Route::get('/{id}-{slug}','Admin\HomeController@list')->name('product.list');
-  Route::get('product','Admin\HomeController@all')->name('product.all'); 
+  Route::post('/{id}-{slug}/sort','Admin\HomeController@productSort')->name('product.sort');
+  Route::post('/{id}-{slug}/search','Admin\HomeController@searchPrice')->name('home.search.price');
   Route::get('/cart-add/{id}','CartController@add')->name('cart.add');
   Route::get('/cart-remove/{id}','CartController@remove')->name('cart.remove');
   Route::get('/cart-update/{id}','CartController@update')->name('cart.update');
@@ -79,9 +81,7 @@ Route::group(['prefix' => 'admin','namespace' => 'admin','middleware'=>'CheckLog
   Route::get('/contact',function(){
       return view('frontend.contact');
   })->name('contact.index');
-    Route::get('/cart',function(){
-      return view('frontend.cartview');
-  })->name('cart.process');
+    Route::get('/cart','CartController@index')->name('cart.process');
   Route::get('about',function(){
       return view('frontend.about');
   })->name('about.index');

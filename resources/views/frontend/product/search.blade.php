@@ -23,8 +23,8 @@
                                     <a href="product.html">{{$prod->name}}</a>
                                 </h2>
                                 <div class="price-box">
-                                    <span class="product-price">{{number_format($prod->price)}} VNĐ</span> 
-                                    
+                                    <span class="product-price">${{number_format($prod->price)}}</span>
+
                                 </div><!-- End .price-box -->
 
                                 <div class="product-action">
@@ -43,8 +43,8 @@
                             </div><!-- End .product-details -->
                         </div><!-- End .product -->
                         @endforeach
-                    </div><!-- End .featured-proucts --> 
-                    
+                    </div><!-- End .featured-proucts -->
+
                 </div><!-- End .container -->
             </div>
 @stop

@@ -28,21 +28,21 @@
                     </div><!-- End .info-box -->
                 </div><!-- End .container -->
             </div><!-- End .info-boxes-container -->
-            
+
             <div class="banners-group">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="banner banner-image">
-                                <a href="{{route('product.all')}}">
-                                    <img src="{{ url('/frontend') }}/assets/images/banners/banner-1.jpg" alt="banner">
+                                <a href="">
+                                    <img src="{{ url('/frontend') }}/assets/images/banners/banner-4.jpg" alt="banner">
                                 </a>
                             </div><!-- End .banner -->
                         </div><!-- End .col-md-4 -->
 
                         <div class="col-md-4">
                             <div class="banner banner-image">
-                                <a href="{{route('product.all')}}">
+                                <a href="">
                                     <img src="{{ url('/frontend') }}/assets/images/banners/banner-2.jpg" alt="banner">
                                 </a>
                             </div><!-- End .banner -->
@@ -50,12 +50,11 @@
 
                         <div class="col-md-4">
                             <div class="banner banner-image">
-                                <a href="{{route('product.all')}}">
-                                    <img src="{{ url('/frontend') }}/assets/images/banners/banner-3.jpg" alt="banner">
+                                <a href="">
+                                    <img src="{{ url('/frontend') }}/assets/images/banners/banner-5.jpg" alt="banner">
                                 </a>
                             </div><!-- End .banner -->
                         </div><!-- End .col-md-4 -->
                     </div><!-- End .row -->
                 </div><!-- End .container -->
             </div><!-- End .banneers-group -->
-            

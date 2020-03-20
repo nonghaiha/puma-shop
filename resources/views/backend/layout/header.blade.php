@@ -44,7 +44,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>TT</b>H</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Shop</b>TTH</span>
+      <span class="logo-lg"><b>Shop</b>Puma</span>
     </a>
 
     <!-- Header Navbar -->
@@ -56,7 +56,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-         
+
           <!-- User Account Menu -->
           <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->

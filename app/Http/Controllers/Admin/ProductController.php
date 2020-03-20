@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Categories;
+use App\Models\OrdersDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
@@ -10,7 +12,7 @@ use App\Models\Attribute;
 use App\Models\ProductAttribute;
 class ProductController extends Controller
 {
-     /** 
+     /**
     GET account.index =>url account/index
     */
     public function index()
@@ -19,16 +21,16 @@ class ProductController extends Controller
        return view('backend.product.index',$data);
     }
 
-    /** 
+    /**
     GET account.create =>url account/create
     */
     public function create()
     {
-        $data['categorys']=category::all();
+        $data['categorys']=Categories::all();
        return view('backend.product.create',$data);
     }
 
-    /** 
+    /**
     post account.store =>url acount/store
     */
     public function store(Request $request)
@@ -44,17 +46,17 @@ class ProductController extends Controller
         return redirect()->route('product.index');
     }
 
-    /** 
+    /**
     get account.edit =>url acount/1/edit
     */
     public function edit($id)
     {
-        $data['categorys']=category::all();
+        $data['categorys']=Categories::all();
         $data['product']=product::find($id);
        return view('backend.product.edit',$data);
     }
 
-    /** 
+    /**
     put account.update =>url acount/1/update
     */
     public function update(Request $request,$id)
@@ -75,7 +77,7 @@ class ProductController extends Controller
         return redirect()->route('product.index');
     }
 
-    /** 
+    /**
     get account.show =>url acount/1
     */
     public function show($id)
@@ -83,13 +85,19 @@ class ProductController extends Controller
 
     }
 
-    /** 
+    /**
     delete account.show =>url acount/1
     */
     public function destroy($id)
     {
-        product::find($id)->delete();
-        return redirect()->route('product.index')->with('success','Xóa sản phẩm thành công!');
+        $orderDetail = OrdersDetail::all();
+        if($orderDetail){
+            return redirect()->route('product.index')->with('error','Sản phẩm vẫn đang được order');
+        }
+        else{
+            product::find($id)->delete();
+            return redirect()->route('product.index')->with('success','Xóa sản phẩm thành công!');
+        }
     }
 
     public function getKho($id)
@@ -128,8 +136,8 @@ class ProductController extends Controller
             $request->merge(['quantity' => $quantity]);
             ProductAttribute::where('product_id',$id)->where('attribute_id',$request->attribute_id)->update($request->all());
             return redirect()->route('product.index')->with('success','Sản phẩm đã được thêm số lượng!');
-           
-        
+
+
         }
     }
 }

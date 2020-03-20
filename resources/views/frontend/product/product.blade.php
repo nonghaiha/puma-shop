@@ -1,12 +1,12 @@
     @extends('frontend.layout.master')
-@section('title','List Item')
+@section('title',''.$produ->name.'')
 @section('main')
  <main class="main">
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="#">Electronics</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('frontend.layout')}}"><i class="icon-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="#"></a></li>
                         <li class="breadcrumb-item active" aria-current="page">Headsets</li>
                     </ol>
                 </div><!-- End .container -->
@@ -23,7 +23,7 @@
                                             <div class="product-item">
                                                 <img class="product-single-image" src="{{$produ->image}}" data-zoom-image="{{$produ->image}}"/>
                                             </div>
-                                            
+
                                         </div>
                                         <!-- End .product-single-carousel -->
                                         <span class="prod-full-screen">
@@ -31,7 +31,7 @@
                                         </span>
                                     </div>
                                     <div class="prod-thumbnail row owl-dots" id='carousel-custom-dots'>
-                                        
+
                                         <div class="col-3 owl-dot">
                                             <img src="{{$produ->images}}"/>
                                         </div>
@@ -51,7 +51,7 @@
                                         </div><!-- End .product-container -->
 
                                         <div class="price-box">
-                                            <span class="product-price">{{$produ->price}} VND</span>
+                                            <span class="product-price">${{$produ->price}}</span>
                                         </div><!-- End .price-box -->
 
                                         <div class="product-desc">
@@ -283,7 +283,7 @@
 
                             <div class="widget widget-featured">
                                 <h3 class="widget-title">Featured Products</h3>
-                                
+
                                 <div class="widget-body">
                                     <div class="owl-carousel widget-featured-products">
                                         <div class="featured-col">

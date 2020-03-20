@@ -18,7 +18,7 @@
                                 </div><!-- End .feature-box-content -->
                             </div><!-- End .feature-box -->
                         </div><!-- End .col-md-4 -->
-                        
+
                         <div class="col-md-4">
                             <div class="feature-box feature-box-simple text-center">
                                 <i class="icon-credit-card"></i>
@@ -44,10 +44,10 @@
                 </div><!-- End .container -->
             </div><!-- End .info-section -->
 
-            <div class="promo-section" style="background-image: url(assets/images/promo-bg.jpg)">
+            <div class="promo-section" style="background-image: url("")>
                 <div class="container">
                     <h3>fashion show collection</h3>
-                    <a href="{{route('product.all')}}" class="btn btn-dark">Shop Now</a>
+                    <a href="" class="btn btn-dark">Shop Now</a>
                 </div><!-- End .container -->
             </div><!-- End .promo-section -->
 

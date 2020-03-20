@@ -1,7 +1,7 @@
  <div class="featured-products-section carousel-section">
                 <div class="container">
                     <h2 class="h3 title mb-4 text-center">Featured Products</h2>
-                    
+
                     <div class="featured-products owl-carousel owl-theme">
                         @foreach($product as $model)
                         <div class="product">
@@ -21,8 +21,8 @@
                                     <a href="{{route('product.list',['slug' => $model->slug ,'id' => $model->id])}}">{{$model->name}}</a>
                                 </h2>
                                 <div class="price-box">
-                                    <span class="product-price">{{number_format($model->price)}} VNĐ</span> 
-                                    
+                                    <span class="product-price">${{number_format($model->price)}}</span>
+
                                 </div><!-- End .price-box -->
 
                                 <div class="product-action">
@@ -30,7 +30,7 @@
                                         <span>Add to Wishlist</span>
                                     </a>
 
-                                    <a href="{{route('cart.add',['id'=>$model->id,'slug'=>$model->slug])}}" class="paction add-cart" title="Add to Cart">
+                                    <a href="{{route('cart.add',['id'=>$model->id,'slug'=>$model->slug])}}" class="paction add-cart" title="Add to Cart" id="cartCheck">
                                         <span>Add to Cart</span>
                                     </a>
 
@@ -42,7 +42,7 @@
                         </div><!-- End .product -->
                        @endforeach
                     </div><!-- End .featured-proucts -->
-                    
+
                 </div><!-- End .container -->
             </div><!-- End .featured-proucts-section -->
 
@@ -71,7 +71,7 @@
                                     <a href="{{route('product.list',['slug' => $mode->slug ,'id' => $mode->id])}}">{{$mode->name}}</a>
                                 </h2>
                                 <div class="price-box">
-                                    <span class="product-price">{{number_format($mode->price)}}</span>
+                                    <span class="product-price">${{number_format($mode->price)}}</span>
                                 </div><!-- End .price-box -->
 
                                 <div class="product-action">
@@ -79,7 +79,7 @@
                                         <span>Add to Wishlist</span>
                                     </a>
 
-                                    <a href="{{route('cart.add',['id'=>$mode->id,'slug'=>$mode->slug])}}" class="paction add-cart" title="Add to Cart">
+                                    <a href="{{route('cart.add',['id'=>$mode->id,'slug'=>$mode->slug])}}" class="paction add-cart" title="Add to Cart" id="cartCheck">
                                         <span>Add to Cart</span>
                                     </a>
 

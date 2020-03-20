@@ -1,8 +1,10 @@
-<?php 
+<?php
 	namespace App\Providers;
 
-	/**
-	 * 
+	use Illuminate\Support\Facades\Log;
+
+/**
+	 *
 	 */
 	class Cart
 	{
@@ -21,6 +23,7 @@
 				'id' => $pro->id,
 				'name' => $pro->name,
 				'image'=> $pro->image,
+                'slug' => $pro->slug,
 				'price' => $pro->sale_price ? $pro->sale_price : $pro->price,
 				'quantity' => 1
 			];
@@ -59,9 +62,9 @@
 		}
 		private function get_total_price(){
 			$tong=0;
-			foreach ($this->items as $item) {
-				$tong += $item['quantity']*$item['price'];
-			}
+                foreach ($this->items as $item) {
+                    $tong += $item['quantity'] * $item['price'];
+                }
 			return $tong;
 		}
 	}
